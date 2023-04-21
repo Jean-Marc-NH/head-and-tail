@@ -17,7 +17,7 @@ public:
 		start = A;
 		end = A + size;
 		p = start;
-		q = end;
+		q = start;
 		r = p;
 
 	}
@@ -37,8 +37,8 @@ public:
 				*q = x;
 			}
 			else {
-				q++;
 				*q = x;
+				q++;
 			}
 		}
 
@@ -48,12 +48,13 @@ public:
 
 		int tmp{-1};
 
-		if ((p + 1) == q)
+
+		if (p == q)
 		{
-			p++;
 			cout << "TA VACIO\n";
 		}
-		else {
+		else 
+		{
 			if ((p + 1) > end)
 			{
 				tmp = *p;
@@ -70,6 +71,11 @@ public:
 
 	void printA() 
 	{
+		if (p == q)
+		{
+			r = p;
+			cout << "VACIO";
+		}
 
 		if (p > q)
 		{
@@ -129,40 +135,25 @@ int main() {
 
 	int A[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10};
 
-
 	headtail arr(A, 10);
 
 	arr.printA();
-
-	arr.pop();
-	arr.pop();
-	arr.pop();
-	arr.printA();
-	arr.pop();
-	arr.printA();
-	arr.pop();
-	arr.printA();
-	arr.pop();
-	arr.printA();
-
-	arr.push(1);
 	arr.push(12);
-	arr.push(2);
-	arr.push(2);
+	arr.push(17);
 	arr.printA();
-
-	arr.push(2);
+	cout << "x = " << arr.pop() << "\n";
 	arr.printA();
-
-	arr.push(2);
+	arr.pop();
 	arr.printA();
-
-	arr.push(2);
-	arr.push(2);
+	arr.pop();
+	arr.pop();
 
 	arr.printA();
 
-	cout << "a";
 
+	for (int i{ 0 }; i < 10; i++) {
+		cout << A[i] << " ";
+	}
+	cout << "\n";
 
 }
