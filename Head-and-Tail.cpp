@@ -11,7 +11,7 @@ public:
 	int* q;
 	int* r; // solo para imprimir
 
-	headtail(int A[], int size) 
+	headtail(int A[], int size)
 	{
 
 		start = A;
@@ -25,11 +25,11 @@ public:
 	void push(int x)
 	{
 
-		if ((q > end) || (p == (q + 1)))
+		if ((((q + 1) > end) && (start == p)) || (p == (q + 1)))
 		{
 			cout << "TAMOS LLENOS\n";
 		}
-		else 
+		else
 		{
 			if (q == end)
 			{
@@ -46,14 +46,14 @@ public:
 
 	int pop() {
 
-		int tmp{-1};
+		int tmp{ -1 };
 
 
 		if (p == q)
 		{
 			cout << "TA VACIO\n";
 		}
-		else 
+		else
 		{
 			if ((p + 1) > end)
 			{
@@ -69,7 +69,7 @@ public:
 		return tmp;
 	}
 
-	void printA() 
+	void printA()
 	{
 		if (p == q)
 		{
@@ -79,8 +79,8 @@ public:
 
 		if (p > q)
 		{
-			r = p;
-			
+			r = q;
+
 			while (true)
 			{
 
@@ -92,7 +92,7 @@ public:
 					r = start;
 				}
 
-				if ( r == q)
+				if (r == q)
 				{
 					cout << *r << " ";
 					break;
@@ -116,7 +116,7 @@ public:
 		cout << endl;
 	}
 
-	~headtail() 
+	~headtail()
 	{
 		start = nullptr;
 		end = nullptr;
@@ -133,27 +133,54 @@ private:
 
 int main() {
 
-	int A[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10};
+	int A[10]{  };
 
 	headtail arr(A, 10);
 
-	arr.printA();
-	arr.push(12);
-	arr.push(17);
-	arr.printA();
-	cout << "x = " << arr.pop() << "\n";
-	arr.printA();
-	arr.pop();
-	arr.printA();
-	arr.pop();
-	arr.pop();
+	for (int i{ 1 }; i < 15; i++) 
+	{
+		arr.push(i);
+	}
 
 	arr.printA();
 
+	for (int i{ 1 }; i < 15; i++) 
+	{
+		arr.pop();
+	}
 
-	for (int i{ 0 }; i < 10; i++) {
+
+	for (int i{ 1 }; i < 8; i++) 
+	{
+		arr.push(i);
+	}
+
+
+	for (int i{ 1 }; i < 4; i++) 
+	{
+		arr.pop();
+	}
+	arr.printA();
+
+
+	for (int i{ 0 }; i < 10; i++)
+	{
 		cout << A[i] << " ";
 	}
 	cout << "\n";
+
+
+	for (int i{ 1 }; i < 11; i++) 
+	{
+		arr.push(i);
+	}
+	arr.printA();
+
+
+	for (int i{ 1 }; i < 13; i++) 
+	{
+		arr.pop();
+	}
+
 
 }
